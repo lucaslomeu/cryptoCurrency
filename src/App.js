@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Coins from './components/Coins/Coins';
+import { Container } from './components/Coins/styledCoins';
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -19,7 +20,7 @@ function App() {
   const filteredCoins = coins.filter((coin) => coin.name.toLowerCase());
 
   return (
-    <div className="App">
+    <Container>
       {filteredCoins.map((coin) => {
         return (
           <Coins
@@ -35,7 +36,7 @@ function App() {
           />
         );
       })}
-    </div>
+    </Container>
   );
 }
 

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+`;
+
 const Coin = styled.div`
   display: flex;
   justify-content: center;
@@ -8,17 +15,17 @@ const Coin = styled.div`
 const UlElement = styled.ul`
   display: flex;
   justify-content: center;
-  margin: auto;
 `;
 
 const LiElement = styled.li`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   text-align: center;
   width: 80vw;
   border-top: 2px solid gray;
-  padding: 0 20px;
+  padding: 5px 0;
+  height: 45px;
 
   &:hover {
     background-color: #325288;
@@ -26,15 +33,16 @@ const LiElement = styled.li`
 `;
 
 const Images = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
+  margin-right: 20px;
 `;
 
 const Title = styled.h1`
   display: flex;
   width: 220px;
   justify-content: start;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #fff;
 `;
 
@@ -74,4 +82,5 @@ export {
   Coin,
   AAA,
   BBB,
+  Container,
 };
