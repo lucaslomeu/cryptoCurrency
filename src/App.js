@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import Coins from './components/Coins/Coins';
+import CoinList from './components/Coins/CoinList';
+import InputSearch from './components/InputSearch/Search';
 import { Container } from './components/Coins/styledCoins';
+import Coins from './components/Coins/Coins';
 
 function App() {
   const [coins, setCoins] = useState([]);
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     axios
       .get(
@@ -17,27 +21,37 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
-  const filteredCoins = coins.filter((coin) => coin.name.toLowerCase());
+  // const filteredCoins = coins.filter((coin) => coin.name.toLowerCase());
+
+  const allCoins = coins.filter((coin) =>
+    coin.name.toLowerCase().includes(search.toLowerCase()),
+  );
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearch(e.target.value.toLowerCase());
+  };
 
   return (
     <Container>
-      {filteredCoins.map((coin) => {
-        return (
-          <Coins
-            key={coin.id}
-            image={coin.image}
-            name={coin.name}
-            symbol={coin.symbol}
-            price={coin.current_price}
-            oneHour={coin.price_change_percentage_1h_in_currency}
-            Porcentage24={coin.price_change_percentage_24h}
-            high24h={coin.high_24h}
-            totalVolume={coin.total_volume}
-          />
-        );
-      })}
+      <InputSearch type="text" placeholder="Search" onChange={handleChange} />
+      <CoinList allCoins={allCoins} />
     </Container>
   );
 }
+
+export const getServerSideProps = async () => {
+  const res = await fetch(
+    'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false',
+  );
+
+  const filteredCoins = await res.json();
+
+  return {
+    props: {
+      filteredCoins,
+    },
+  };
+};
 
 export default App;

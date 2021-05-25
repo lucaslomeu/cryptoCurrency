@@ -4,7 +4,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 100px;
+  margin: 100px 0;
 `;
 
 const Coin = styled.div`
@@ -30,6 +30,7 @@ const LiElement = styled.li`
   &:hover {
     background-color: #325288;
     cursor: pointer;
+  }
 `;
 
 const Images = styled.img`
@@ -72,6 +73,7 @@ const BBB = styled.p`
   text-align: right;
   color: green;
 `;
+
 export {
   Title,
   Symbol,
