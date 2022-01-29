@@ -17,7 +17,6 @@ You will also see any lint errors in the console.
 ## Technologies Used
 
 - [ReactJS](https://reactjs.org/)
-- [Axios](https://github.com/axios/axios)
 
 ## Installation
 
