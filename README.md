@@ -1,4 +1,4 @@
-# Corona Stats
+# CryptoCurrency
 
 Study for API consumption. It is a website to view to view cryptocurrency values.
 
